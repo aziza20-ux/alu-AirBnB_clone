@@ -29,3 +29,9 @@ class BaseModel:
         obj_dict['updated_at'] = self.updated_at.isoformat()
         
         return obj_dict
+
+if __name__ == '__main__':
+    c = basemodel(city = kigali, house = 2rooms)
+    c.save()
+    c.to_dict
+    c.__str__()
