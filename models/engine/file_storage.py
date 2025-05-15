@@ -35,14 +35,13 @@ class FileStorage():
 
                 with open(self.__file_path, 'r') as f:
                     data = json.load(f)
-                    obj_dict = {}
 
                     for ke, obj_dic in data.items():
                         classname = obj_dic.get('__class__')
                         if classname:
                             if classname in classes:
                                 actualclass = classes[classname]
-                                self.obj_dict[ke] = actualclass(**obj_dic)
+                                self.__objects[ke] = actualclass(**obj_dic)
                             else:
                                 print("the class does exit")
                         else:
