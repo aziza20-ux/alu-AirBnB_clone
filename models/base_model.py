@@ -29,11 +29,11 @@ class BaseModel:
 
         return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
 
-    def save(self, e):
+    def save(self):
         """this method will save the last time object was modified"""
 
         self.updated_at = datetime.now()
-        models.storage.save(self)
+        models.storage.save()
 
     def to_dict(self):
         """the method to returm dictionary of the attributes of any object"""
