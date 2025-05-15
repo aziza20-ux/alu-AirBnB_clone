@@ -37,7 +37,7 @@ class FileStorage():
                     data = json.load(f)
                     obj_dict = {}
 
-                    for ke, obj_dic in data:
+                    for ke, obj_dic in data.items():
                         classname = obj_dic.get('__class__')
                         if classname:
                             if classname in classes:
