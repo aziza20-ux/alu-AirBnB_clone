@@ -19,7 +19,7 @@ class FileStorage():
 
         obj_key = f"{obj.__class__.__name__}.{obj.id}"
         self.__objects[obj_key] = obj
-    def save(self):
+    def save(self, d):
 
         obj_dict = {}
 
@@ -28,7 +28,7 @@ class FileStorage():
 
         with open(self.__file_path, 'w') as f:
             json.dump(obj_dict, f)
-    def reload(self):
+    def reload(self, b):
 
         if os.path.exists(self.__file_path):
             try:

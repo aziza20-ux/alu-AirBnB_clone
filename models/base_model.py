@@ -29,7 +29,7 @@ class BaseModel:
 
         return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
 
-    def save(self):
+    def save(self, e):
         """this method will save the last time object was modified"""
 
         self.updated_at = datetime.now()
