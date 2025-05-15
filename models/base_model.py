@@ -6,13 +6,20 @@ from datetime import datetime
 class BaseModel:
     """the constructor of the class '__init__'"""
     def __init__(self, *args, **kwargvs):
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
-
+        
         if kwargvs:
             for k, v in kwargvs.items():
-                self.__dict__[k] = v
+                if k == '__class_':
+                    continue
+                if k in ["created_at", "updated_at"]:
+                    setattr(self, k, datetime.fromisoformat(v))
+                else:
+                    setattr(self, k, v)
+        else:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
+                
 
     def __str__(self):
         """it will return the string represation of object"""
@@ -37,6 +44,6 @@ class BaseModel:
 if __name__ == '__main__':
     c = BaseModel(city="kigali", house="2rooms")
     c.save()
-    print(c.to_dict())
+    
     
     
