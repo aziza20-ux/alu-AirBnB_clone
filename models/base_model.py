@@ -10,9 +10,7 @@ class BaseModel:
         
         if kwargvs:
             for k, v in kwargvs.items():
-                if k == '__class_':
-                    continue
-                if k in ["created_at", "updated_at"]:
+                if k in ["created_at", "updated_at"] and k != '__class__':
                     setattr(self, k, datetime.fromisoformat(v))
                 else:
                     setattr(self, k, v)
