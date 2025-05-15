@@ -2,6 +2,7 @@
 
 import uuid
 from datetime import datetime
+import models 
 
 class BaseModel:
     """the constructor of the class '__init__'"""
@@ -19,6 +20,7 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
+            models.storage.new(self)
                 
 
     def __str__(self):
@@ -30,6 +32,7 @@ class BaseModel:
         """this method will save the last time object was modified"""
 
         self.updated_at = datetime.now()
+        models.storage.save(self)
 
     def to_dict(self):
         """the method to returm dictionary of the attributes of any object"""
@@ -41,9 +44,7 @@ class BaseModel:
         
         return obj_dict
 
-if __name__ == '__main__':
-    c = BaseModel(city="kigali", house="2rooms")
-    c.save()
+
     
     
     
