@@ -1,3 +1,8 @@
+
+"""overriding defaul`emptyline` method
+    so that an empty line + ENTER shouldn’t execute anything"""
+    #overriding defaul`emptyline` methodso that an empty line + ENTER shouldn’t execute anything
+    #overriding defaul`emptyline` methodso that an empty line + ENTER shouldn’t execute anything
 import cmd
 
 
