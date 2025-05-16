@@ -2,7 +2,7 @@
 
 import uuid
 from datetime import datetime
-import models 
+import models
 
 class BaseModel:
     """the constructor of the class '__init__'"""
@@ -49,4 +49,4 @@ if __name__ == '__main__':
 
     c = BaseModel(city = "aziza", id = "2")
     c.save()
-    print(f"{c}")
+
