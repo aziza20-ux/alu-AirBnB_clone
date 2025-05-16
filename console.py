@@ -1,17 +1,11 @@
-
-"""overriding defaul`emptyline` method
-    so that an empty line + ENTER shouldn’t execute anything"""
-    #overriding defaul`emptyline` methodso that an empty line + ENTER shouldn’t execute anything
-    #overriding defaul`emptyline` methodso that an empty line + ENTER shouldn’t execute anything
 import cmd
 
-
-"""overriding defaul`emptyline` method
-    so that an empty line + ENTER shouldn’t execute anything"""
-
 class HBNBCommand(cmd.Cmd):
-        """overriding defaul`emptyline` method
-        so that an empty line + ENTER shouldn’t execute anything"""
+            """Defines the HolbertonBnB command interpreter.
+
+    Attributes:
+        prompt (str): The command prompt.
+    """
     prompt="(hbnb)"
     def emptyline(self):
         """overriding defaul`emptyline` method 
