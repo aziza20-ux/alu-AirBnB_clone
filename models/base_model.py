@@ -45,7 +45,8 @@ class BaseModel:
         
         return obj_dict
 
+if __name__ == '__main__':
 
-    
-    
-    
+    c = BaseModel(city = "aziza", id = "2")
+    c.save()
+    print(f"{c}")

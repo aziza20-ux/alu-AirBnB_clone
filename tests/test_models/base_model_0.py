@@ -2,7 +2,35 @@ import unittest
 import time
 from models.base_model import BaseModel
 
-class TestingBaseModel(unittest.TestCase):
+
+class TestId(unittest.TestCase):
+
+    def test_id(self):
+
+        d = BaseModel()
+
+        b = BaseModel()
+
+        self.assertNotEqual(d, b)
+
+    def test_todict(self):
+        d = BaseModel()
+
+        dic = d.to_dict()
+
+        self.assertIn('__class__', dic)
+        self.assertEqual(dic['__class__'], 'BaseModel')
+
+        self.assertIsInstance(dic, dict)
+
+    def test_str(self):
+        s = BaseModel()
+
+        st = str(s)
+
+        self.assertIn("[BaseModel]", st)
+
+        self.assertIn(s.id, st)
 
     def test_save(self):
         b = BaseModel()

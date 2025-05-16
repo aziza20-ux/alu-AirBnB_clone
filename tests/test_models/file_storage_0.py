@@ -3,7 +3,7 @@ import os
 from datetime import datetime
 import time
 
-from models.engine.file_storage import FileStorage
+from models import storage
 
 from models.base_model import BaseModel
 
@@ -11,9 +11,37 @@ from models.base_model import BaseModel
 
 class testpath(unittest.TestCase):
     def test_path(self):
-        d = FileStorage()
+        s = BaseModel()
+        s.save()
 
-        self.assertFalse(os.path.exists(FileStorage._FileStorage__file_path))
+        self.assertTrue(os.path.exists(storage._FileStorage__file_path))
+
+    def test_object(self):
+        s = BaseModel()
+        s.save()
+
+        key = f"BaseModel.{s.id}"
+        objects = storage.all()
+        self.assertIn(key, objects)
+    def test_all_empty(self):
+
+        result = storage.all()
+        self.assertNotEqual(len(result), 0)
+    def test_all(self):
+        obj = BaseModel()
+
+        storage.new(obj)
+
+        objects = storage.all()
+
+        self.assertIn(obj, objects.values())
+        
+
+
+    
+
+
 if __name__ == '__main__':
+
     unittest.main()
 
