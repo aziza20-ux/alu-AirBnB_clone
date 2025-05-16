@@ -1,6 +1,12 @@
 import cmd
 
+
+"""overriding defaul`emptyline` method
+    so that an empty line + ENTER shouldn’t execute anything"""
+
 class HBNBCommand(cmd.Cmd):
+        """overriding defaul`emptyline` method
+        so that an empty line + ENTER shouldn’t execute anything"""
     prompt="(hbnb)"
     def emptyline(self):
         """overriding defaul`emptyline` method 
