@@ -5,7 +5,12 @@ class HBNBCommand(cmd.Cmd):
 
     Attributes:
         prompt (str): The command prompt.
+        commands:
+            `quit` and `EOF`
+            together with `help so that `help quit`
+            emptylines 
     """
+
     prompt="(hbnb)"
     def emptyline(self):
         """overriding defaul`emptyline` method 
