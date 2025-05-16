@@ -44,11 +44,11 @@ class HBNBCommand(cmd.Cmd):
             print(f"{new_obj.id}")
     def do_show(self, arg):
         args = arg.split()
-        if args == 0:
+        if len(args) < 1:
             print("** class name missing **")
         elif args[0] not in self.classes:
             print("** class doesn't exist **")
-        elif args[1] == 0:
+        elif len(args) < 2:
             print("** instance id missing **")
         else:
             key = f"{args[0]}.{args[1]}"
