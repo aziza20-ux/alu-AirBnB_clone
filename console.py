@@ -38,12 +38,28 @@ class HBNBCommand(cmd.Cmd):
                 class_name, method_call = line.split('.', 1)
                 method, args = method_call.split('(', 1)
                 args = args.rstrip(')')
+
+                if args.startswith('"') and args.endswith('"'):
+                    args = args[1:-1]
+
                 if method == "all":
                     return self.do_all(class_name)
                 elif method == "count":
                     return self.do_count(class_name)
                 elif method == "show":
                     return self.do_show(f"{class_name} {args}")
+                elif method == "destroy":
+                    return self.do_destroy(f"{class_name} {args}")
+                elif method == "update":
+                    parts = [a.strip().strip('"') for a in args.split(",")]
+                    if len(parts) < 3:
+                        print("the arguments are few")
+                        return
+                
+                    obj_id, attr_name, attr_value = parts
+
+                        
+                    return self.do_update(f'{class_name} {obj_id} {attr_name} "{attr_value}"')
             except Exception as e:
                 print("** unkown classname**")
                 return
