@@ -1,14 +1,18 @@
 import unittest
+from models import storage
 import time
 from models.base_model import BaseModel
 
 
 class TestId(unittest.TestCase):
-
-    def test_id(self):
+    def setUp(self):
 
         d = BaseModel()
 
+        b = BaseModel()
+
+    def test_id(self):
+        d = BaseModel()
         b = BaseModel()
 
         self.assertNotEqual(d, b)
@@ -42,5 +46,8 @@ class TestId(unittest.TestCase):
         b.save()
 
         self.assertGreater(b.updated_at, original_time)
+    def tearDown(self):
+        storage._FileStorage__objects.clear()
+        storage.save()
 if __name__ == '__main__':
         unittest.main()
