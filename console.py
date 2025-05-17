@@ -42,6 +42,8 @@ class HBNBCommand(cmd.Cmd):
                     return self.do_all(class_name)
                 elif method == "count":
                     return self.do_count(class_name)
+                elif method == "show":
+                    return self.do_show(f"{class_name} {args}")
             except Exception as e:
                 print("** unkown classname**")
                 return
