@@ -51,17 +51,37 @@ class HBNBCommand(cmd.Cmd):
                 elif method == "destroy":
                     return self.do_destroy(f"{class_name} {args}")
                 elif method == "update":
-                    parts = [a.strip().strip('"') for a in args.split(",")]
-                    if len(parts) < 3:
-                        print("the arguments are few")
-                        return
-                
-                    obj_id, attr_name, attr_value = parts
+                    
+                    id_obj, dic_part = args.split(",", 1)
+                    id_obj = id_obj.strip().strip('"')
+                    dic_part = dic_part.strip()
 
-                        
-                    return self.do_update(f'{class_name} {obj_id} {attr_name} "{attr_value}"')
+                    if dic_part.startswith('{') and dic_part.endswith('}'):
+                        try:
+                            import ast
+                            pyth_obj = ast.literal_eval(dic_part)
+                                                        
+                        except Exception as e:
+                            print("invalid dictitionary")
+                            return
+
+                        for k, v in pyth_obj.items():
+                            self.do_update(f'{class_name} {id_obj} {k} "{v}"')
+                    else:
+
+                        parts = [a.strip().strip('"') for a in args.split(",")]
+                        if len(parts) < 3:
+                            print("the arguments are few")
+                            return
+
+                        obj_id, attr_name, attr_value = parts
+
+
+                        return self.do_update(f'{class_name} {obj_id} {attr_name} "{attr_value}"')
+
+
             except Exception as e:
-                print("** unkown classname**")
+                print("** unkown classname or something went wrong**")
                 return
         else:
             print("**unkown classname**")
