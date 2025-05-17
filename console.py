@@ -31,6 +31,20 @@ class HBNBCommand(cmd.Cmd):
         "City":City,
         "Amenity":Amenity
         }
+    def default(self, line):
+
+        if '.' in line and '(' in line and')' in line:
+            try:
+                class_name, method_call = line.split('.', 1)
+                method, args = method_call.split('(', 1)
+                args = args.rstrip(')')
+                if method == "all":
+                    return self.do_all(class_name)
+            except Exception as e:
+                print("** unkown classname**")
+                return
+        else:
+            print("**unkown classname**")
             
 
     def emptyline(self):
@@ -103,8 +117,9 @@ class HBNBCommand(cmd.Cmd):
                 return
                 
             
-            for obj in objects.values():
-                results.append(str(obj))
+            for key, obj in objects.items():
+                if key.startswith(arg +'.'):
+                    results.append(str(obj))
         else:
             for obj in objects.values():
                 results.append(str(obj))

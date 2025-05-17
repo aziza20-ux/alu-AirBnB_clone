@@ -40,7 +40,9 @@ class Testinguser(unittest.TestCase):
         objects = storage.all()
         stored = objects[key]
         self.assertEqual(stored.last_name, 'solace')
-
+    def tearDown(self):
+        storage._FileStorage__objects.clear()
+        storage.save()
 
 if __name__ == '__main__':
     unittest.main()
