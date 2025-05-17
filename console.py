@@ -40,6 +40,8 @@ class HBNBCommand(cmd.Cmd):
                 args = args.rstrip(')')
                 if method == "all":
                     return self.do_all(class_name)
+                elif method == "count":
+                    return self.do_count(class_name)
             except Exception as e:
                 print("** unkown classname**")
                 return
@@ -124,6 +126,20 @@ class HBNBCommand(cmd.Cmd):
             for obj in objects.values():
                 results.append(str(obj))
         print(results)
+    def do_count(self, arg):
+        results = 0
+        if arg:
+            if arg not in self.classes:
+                print("**class doesn't exist**")
+                return
+            all_objects = storage.all()
+            for key, v in all_objects.items():
+
+                if key.startswith(arg + '.'):
+                    results += 1
+            print(results)
+
+
 
     def do_update(self,arg):
         args = arg.split()
