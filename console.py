@@ -80,7 +80,8 @@ class HBNBCommand(cmd.Cmd):
                         obj_id, attr_name, attr_value = parts
 
                         return self.do_update(
-                            f'{class_name} {obj_id} {attr_name} "{attr_value}"')
+                            f'{class_name} {obj_id} {attr_name} "{attr_value}"'
+                            )
 
             except Exception as e:
                 print("** unkown classname or something went wrong**")

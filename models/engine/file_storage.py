@@ -63,7 +63,7 @@ class FileStorage():
                                 print("the class does exit")
                         else:
                             print(
-                                f"object with {ke} doesn't have a class attribute")
+                                f"objectwith {ke} classattributedon'texist")
 
             except FileNotFoundError:
                 return
