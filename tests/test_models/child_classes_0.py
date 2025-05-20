@@ -7,6 +7,7 @@ from models.place import Place
 from models.amenity import Amenity
 from models.review import Review
 
+
 class childclassestest(unittest.TestCase):
     def setUp(self):
         self.stat = State()
@@ -30,6 +31,7 @@ class childclassestest(unittest.TestCase):
         stored = objects[key]
 
         self.assertIn(key, objects)
+
     def test_city(self):
 
         objects = storage.all()
@@ -56,6 +58,7 @@ class childclassestest(unittest.TestCase):
 
         stored = objects[key]
         self.assertIn(key, objects)
+
     def test_place(self):
 
         objects = storage.all()
@@ -64,6 +67,7 @@ class childclassestest(unittest.TestCase):
 
         stored = objects[key]
         self.assertIn(key, objects)
+
 
 if __name__ == '__main__':
     unittest.main()

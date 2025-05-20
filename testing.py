@@ -19,4 +19,3 @@ storage.reload()
 print(storage.all())
 for k, v in storage.all().items():
     print(v)
-

@@ -1,5 +1,4 @@
 
-#!/usr/bin/python3
 import unittest
 from unittest.mock import patch
 from io import StringIO
@@ -59,7 +58,6 @@ class TestConsole(unittest.TestCase):
             HBNBCommand().onecmd("destroy")
             self.assertIn("** class name missing **", f.getvalue())
 
-
     def test_destroy_missing_id(self):
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("destroy BaseModel")
@@ -84,7 +82,6 @@ class TestConsole(unittest.TestCase):
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("update")
             self.assertIn("** class name missing **", f.getvalue())
-
 
     def test_update_missing_id(self):
         with patch('sys.stdout', new=StringIO()) as f:
@@ -114,7 +111,6 @@ class TestConsole(unittest.TestCase):
             HBNBCommand().onecmd(f"update BaseModel {instance_id} name")
             self.assertIn("** value missing **", f.getvalue())
 
-
     def test_count_valid_class(self):
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("create BaseModel")
@@ -128,4 +124,3 @@ class TestConsole(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-

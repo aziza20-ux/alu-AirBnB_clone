@@ -46,8 +46,11 @@ class TestId(unittest.TestCase):
         b.save()
 
         self.assertGreater(b.updated_at, original_time)
+
     def tearDown(self):
         storage._FileStorage__objects.clear()
         storage.save()
+
+
 if __name__ == '__main__':
-        unittest.main()
+    unittest.main()

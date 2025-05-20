@@ -10,16 +10,17 @@ from models.amenity import Amenity
 from models.review import Review
 
 
-classes = { 
-        "BaseModel":BaseModel,
-        "User":User,
-        "Place":Place,
-        "State":State,
-        "Review":Review, 
-        "City":City, 
-        "Amenity":Amenity
-        }
-         
+classes = {
+    "BaseModel": BaseModel,
+    "User": User,
+    "Place": Place,
+    "State": State,
+    "Review": Review,
+    "City": City,
+    "Amenity": Amenity
+}
+
+
 class FileStorage():
 
     __file_path = "file.json"
@@ -28,19 +29,22 @@ class FileStorage():
     def all(self):
         """displaying all objects"""
         return self.__objects
+
     def new(self, obj):
 
         obj_key = f"{obj.__class__.__name__}.{obj.id}"
         self.__objects[obj_key] = obj
+
     def save(self):
 
         obj_dict = {}
 
         for key, ob in self.__objects.items():
-            obj_dict[key] = ob.to_dict() 
+            obj_dict[key] = ob.to_dict()
 
         with open(self.__file_path, 'w') as f:
             json.dump(obj_dict, f)
+
     def reload(self):
 
         if os.path.exists(self.__file_path):
@@ -58,8 +62,8 @@ class FileStorage():
                             else:
                                 print("the class does exit")
                         else:
-                            print(f"object with {ke} doesn't have a class attribute")
+                            print(
+                                f"object with {ke} doesn't have a class attribute")
 
             except FileNotFoundError:
                 return
-                            

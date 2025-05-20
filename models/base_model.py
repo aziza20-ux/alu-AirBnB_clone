@@ -4,10 +4,12 @@ import uuid
 from datetime import datetime
 import models
 
+
 class BaseModel:
     """the constructor of the class '__init__'"""
+
     def __init__(self, *args, **kwargvs):
-        
+
         if kwargvs:
             for k, v in kwargvs.items():
                 if k == '__class__':
@@ -22,7 +24,6 @@ class BaseModel:
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
             models.storage.new(self)
-                
 
     def __str__(self):
         """it will return the string represation of object"""
@@ -42,11 +43,11 @@ class BaseModel:
         obj_dict['__class__'] = self.__class__.__name__
         obj_dict['created_at'] = self.created_at.isoformat()
         obj_dict['updated_at'] = self.updated_at.isoformat()
-        
+
         return obj_dict
+
 
 if __name__ == '__main__':
 
-    c = BaseModel(city = "aziza", id = "2")
+    c = BaseModel(city="aziza", id="2")
     c.save()
-

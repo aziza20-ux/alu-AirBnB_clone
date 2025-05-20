@@ -8,10 +8,10 @@ from models import storage
 from models.base_model import BaseModel
 
 
-
 class testpath(unittest.TestCase):
     def setUp(self):
         s = BaseModel()
+
     def test_path(self):
         s = BaseModel()
         s.save()
@@ -25,10 +25,12 @@ class testpath(unittest.TestCase):
         key = f"BaseModel.{s.id}"
         objects = storage.all()
         self.assertIn(key, objects)
+
     def test_all_empty(self):
 
         result = storage.all()
         self.assertNotEqual(len(result), 0)
+
     def test_all(self):
         obj = BaseModel()
 
@@ -37,15 +39,12 @@ class testpath(unittest.TestCase):
         objects = storage.all()
 
         self.assertIn(obj, objects.values())
-        
 
     def tearDown(self):
         storage._FileStorage__objects.clear()
         storage.save()
-    
 
 
 if __name__ == '__main__':
 
     unittest.main()
-
