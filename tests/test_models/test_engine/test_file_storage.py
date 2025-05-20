@@ -10,7 +10,7 @@ from models.base_model import BaseModel
 
 class testpath(unittest.TestCase):
     def setUp(self):
-        s = BaseModel()
+        self.s = BaseModel()
 
     def test_path(self):
         s = BaseModel()
@@ -39,6 +39,16 @@ class testpath(unittest.TestCase):
         objects = storage.all()
 
         self.assertIn(obj, objects.values())
+
+    def test_reload(self):
+        s = BaseModel()
+        s.save()
+        key = f"BaseModel.{s.id}"
+        storage.reload()
+        results = storage.all()
+
+        self.assertIn(key, results)
+
 
     def tearDown(self):
         storage._FileStorage__objects.clear()
